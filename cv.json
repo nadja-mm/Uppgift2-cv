@@ -1,0 +1,31 @@
+{
+    "name": "Nadja Molarin",
+    "title": "Butiksbiträde och studerande",
+    "contact": {
+    "email": "nadja@molarin.se",
+    "phone": "070-590 80 30"
+    },
+
+    "experience": [{
+        "jobTitle": "Assisterande butikschef",
+        "company": "Rituals",
+        "years": "April 2024 - Februari 2025",
+        "description": "Arbetar tätt samman med butikschef för att leda vårt team och nå våra budgetmål."
+    },
+    {
+        "jobTitle": "Butiksbiträde",
+        "company": "Rituals",
+        "years": "2022 - 2024",
+        "description": "Butiksbiträde och säljare."
+    }
+    ],
+
+    "education": [{
+        "degree": "Frontend developer",
+        "school": "Yrkkeshögskolan Borås",
+        "years": "2025 - 2026"
+    }
+    ],
+
+    "skills": ["HTML", "CSS", "JavaScript"]
+}

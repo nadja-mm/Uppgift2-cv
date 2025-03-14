@@ -12,7 +12,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: antiquewhite;
+    background-color: var(--base-variant);
     display: flex;
     flex-direction:column;
     min-height: 100vh;
@@ -21,8 +21,8 @@ body{
 
 /*Rubrik och Navigeringsmeny*/
 header{
-    background-color: #333;
-    color: #fff;
+    background-color: var(--base-variant);
+    color: var(--text-color);
     padding: 25px 0;
     text-align: right;
 }
@@ -41,14 +41,14 @@ nav ul{
 }
 
 nav ul li{
-    margin: 0 15px;
-    color: #fff;
+    margin: 0 25px 0 50px;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
 }
 
 nav ul li a{
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
 }
@@ -69,7 +69,8 @@ li:hover{
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    background: #fff;
+    background: var(--base-color);
+    color: var(--text-color);
 }
 
 .column-profile, .profile-text{
@@ -95,13 +96,13 @@ li:hover{
 
 /*Knappen*/
 
-button{
+#cv-button{
     display: flex;
     flex-direction: column;
     margin: 10px 150px;
     width: 50%;
     height: 40px;
-    background: rgb(159, 130, 146);
+    background: var(--accent-color);
     border: none;
     align-items: center;
     border-radius: 20px;
@@ -117,12 +118,11 @@ button{
 }
 
 button:hover{
-    background-color: #613952c4;
     transform: scale(1.1);
 }
 
 .cv-link{
-    color: black;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -130,6 +130,7 @@ button:hover{
 
 h2{
     margin: 20px;
+    color: var(--text-color);
 }
 
 .container-gallery{
@@ -138,7 +139,7 @@ h2{
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--base-color);
 }
 
 .column-gallery{
@@ -146,10 +147,11 @@ h2{
     min-width: 262px;
     max-width: 262px;
     text-align: center;
-    background: #fff;
+    background: var(--base-variant);
     padding: 1px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
+    color: var(--text-color);
 } 
 
 .gallery-img{
@@ -166,7 +168,7 @@ h2{
 footer{
     display: flex;
     flex-direction: row;
-    background-color: #333;
+    background-color: var(--primary-color);
     color: #fff;
     padding: 10px;
     width: 100%;
@@ -201,16 +203,16 @@ footer{
 .about, .contact-card{
     margin: 100px;
     padding: 100px;
-    background-color: #fff;
-    
+    background-color: var(--base-color);
+    color: var(--text-color)
 }
 
-.cv-img{
+/*.cv-img{  Borttagen och konverterad till JSON-fil
     display:flex;
     margin: 40px 40px 40px 250px;
     max-width: 700px;
     max-height: auto;
-}
+}*/
     
 /*Anpassar till skärmstorlek*/
 @media (max-width: 768px){ 
@@ -225,4 +227,75 @@ footer{
     
         width: 50%;
     }
+}
+
+/*JavaScript effects - darkmode*/
+/*inspiration till denna effekt hittade jag på w3schools, sedan sökte
+jag mig vidare med youtube för att få se exempel på hur denna effekt skapas.
+Färgerna för darkmode har jag tagit från min källa, däremot har jag jobbat 
+med placering av knapp och utseende av knapp själv. Även val av ikon för switchen.*/
+:root{
+    --base-color: white;
+    --base-variant: #e8e9ed;
+    --text-color: #111528;
+    --secondary-text: #232738;
+    --primary-color: #3a435d;
+    --accent-color: #0071ff;
+}
+
+.darkmode{
+    --base-color: #070b1d;
+    --base-variant: #101425;
+    --text-color: #fff;
+    --secondary-text: #a4a5b8;
+    --primary-color: #3a435d;
+    --accent-color: #0071ff;
+}
+
+#theme-switch{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    top: 25px;
+    left: 250px;
+}
+
+#theme-switch i{
+    fill: var(--primary-color);
+}
+
+#theme-switch i:last-child{
+    display: none;
+}
+
+.darkmode #theme-switch i:first-child{
+    display: none;
+}
+
+.darkmode #theme-switch i:last-child{
+    display: block;
+}
+
+/*JSON file - mitt CV*/
+/*inspiration till detta hittade jag på youtube, både hur jag borde bygga
+min fil, men också hur jag kopplar ihop den till min HTML*/
+#cv-container{
+    background-color: var(--base-color);
+    color: var(--text-color);
+    margin: 30px;
+    border-style: double;
+    border-width: 5px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#cv-container li{
+    list-style: none;
+    text-decoration: none;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/style.css">
+    <script type="text/javascript" src="script.js" defer></script>
     <title>Nadja Portfolio</title>
 </head>
 <body>
@@ -15,16 +16,58 @@
         <nav>
             <ul>
                 <li><a href="/index.html">Startsida</a></li>
-                <li><a href="/navbar/about.html">Om mig</a></li>
-                <li><a href="/navbar/contact.html">Kontakt</a></li>
+                <li><a href="/about.html">Om mig</a></li>
+                <li><a href="/contact.html">Kontakt</a></li>
             </ul>
+            <button id="theme-switch">
+                <i class="fas fa-sun sun-icon"></i>
+                <i class="fas fa-moon moon-icon"></i>
+            </button>
         </nav>
     </header>
 
     <section>
-        <div>
-            <img class="cv-img" src="images/CV.png" alt="CV">
-        </div>
+        <div id="cv-container"></div>
+        
+        <script>
+  // Hämta JSON-filen
+fetch("cv.json")
+    .then(response => response.json())
+    .then(data => {
+      // Välj plats att lägga till CV-informationen
+    const container = document.getElementById("cv-container");
+
+      // Skapa HTML-struktur med JSON-data
+    container.innerHTML = `
+        <h2>${data.name}</h2>
+        <p><strong>${data.title}</strong></p>
+        <p>Email: ${data.contact.email}</p>
+        <p>Telefon: ${data.contact.phone}</p>
+        
+        <h3>Arbetslivserfarenhet</h3>
+        <ul>
+        ${data.experience.map(job => `
+            <li>
+            <strong>${job.jobTitle}</strong> på ${job.company} (${job.years})  
+            <p>${job.description}</p>
+            </li>
+        `).join('')}
+        </ul>
+
+        <h3>Utbildning</h3>
+        <ul>
+        ${data.education.map(edu => `
+            <li>${edu.degree} - ${edu.school} (${edu.years})</li>
+        `).join('')}
+        </ul>
+
+        <h3>Kompetenser</h3>
+        <p>${data.skills.join(", ")}</p>
+    `;
+    })
+    .catch(error => console.error("Fel vid hämtning av CV:", error));
+</script>
+
     </section>
     <footer>
         <ul class="footer">
